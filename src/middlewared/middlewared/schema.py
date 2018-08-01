@@ -349,6 +349,7 @@ class List(EnumMixin, Attribute):
 
     def __init__(self, *args, **kwargs):
         self.items = kwargs.pop('items', [])
+        self.unique = kwargs.pop('unique', False)
         super(List, self).__init__(*args, **kwargs)
 
     def clean(self, value):
@@ -384,7 +385,12 @@ class List(EnumMixin, Attribute):
 
         verrors = ValidationErrors()
 
+        s = set()
         for i, v in enumerate(value):
+            if self.unique:
+                if v in s:
+                    verrors.add(f"{self.name}.{i}", "This value is not unique.")
+                s.add(v)
             for attr in self.items:
                 try:
                     attr.validate(v)
