@@ -3,18 +3,18 @@ import os
 import time
 import subprocess as su
 
-import iocage.lib.iocage as ioc
+import iocage_lib.iocage as ioc
 import libzfs
 import requests
 import itertools
-from iocage.lib.ioc_check import IOCCheck
-from iocage.lib.ioc_clean import IOCClean
-from iocage.lib.ioc_fetch import IOCFetch
-from iocage.lib.ioc_image import IOCImage
-from iocage.lib.ioc_json import IOCJson
+from iocage_lib.ioc_check import IOCCheck  # TEMPORARY CHANGES
+from iocage_lib.ioc_clean import IOCClean
+from iocage_lib.ioc_fetch import IOCFetch
+from iocage_lib.ioc_image import IOCImage
+from iocage_lib.ioc_json import IOCJson
 # iocage's imports are per command, these are just general facilities
-from iocage.lib.ioc_list import IOCList
-from iocage.lib.ioc_upgrade import IOCUpgrade
+from iocage_lib.ioc_list import IOCList
+from iocage_lib.ioc_upgrade import IOCUpgrade
 from middlewared.schema import Bool, Dict, Int, List, Str, accepts
 from middlewared.service import CRUDService, job, private
 from middlewared.service_exception import CallError
